@@ -19,7 +19,7 @@ class HexEncrypting:
         self.new_key = []
         self.row_ABC = []
         self.HEX_code = []
-        self.HEC_line = []
+        self.HEX_line = []
         self.abc = {1: 'a', 2: 'b', 3: 'c', 4: 'd', 5: 'e', 6: 'f', 7: 'g', 8: 'h', 9: 'i', 10: 'j', 11: 'k', 12: 'l', 13: 'm', 14: 'n', 15: 'o', 16: 'p', 17: 'q', 18: 'r', 19: 's', 20: 't', 21: 'u', 22: 'v', 23: 'w', 24: 'x', 25: 'y', 26: 'z', 27: ' '}
         self.rowed_input.append(self.row_input.lower())
 
@@ -110,9 +110,9 @@ class HexEncrypting:
 
         # One line string
         one_line = ' '.join([''.join(sub) for sub in self.HEX_code])
-        self.HEC_line.append(one_line)
+        self.HEX_line.append(one_line)
         print()
-        print(Fore.BLUE + f'HEX без 4x4: {self.HEC_line}')
+        print(Fore.BLUE + f'HEX без 4x4: {self.HEX_line}')
 
     def EncryptEng(self):
         b = str(self.rowed_input)
@@ -155,9 +155,9 @@ class HexEncrypting:
 
         # One line string
         one_line  = ' '.join([''.join(sub) for sub in self.HEX_code])
-        self.HEC_line.append(one_line)
+        self.HEX_line.append(one_line)
         print()
-        print(Fore.BLUE + f'HEX without 4x4: {self.HEC_line}')
+        print(Fore.BLUE + f'HEX without 4x4: {self.HEX_line}')
 
     def Language(self):
         if self.lang == '1':
