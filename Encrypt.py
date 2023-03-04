@@ -35,13 +35,13 @@ class HexEncrypting:
 
     # Scan input for validate
     def CheckingRus(self):
-        if len(self.row_input) > 16:
+        while len(self.row_input) > 16:
             print(Fore.YELLOW + 'длина строки больше 16!' + Fore.RESET)
             self.row_input = input(Fore.BLUE + 'Попробуйте еще раз: ')
             self.rowed_input.clear()
             self.rowed_input.append(self.row_input.lower())
 
-        elif len(self.row_input) < 16:
+        while len(self.row_input) != 16:
             print(Fore.YELLOW + 'Ваша набранная строка настолько мала, что нужно 16 букв!' + Fore.RESET)
             self.row_input = input(Fore.BLUE + 'Попробуйте еще раз: ')
             self.rowed_input.clear()
@@ -51,13 +51,13 @@ class HexEncrypting:
             print(Fore.RED + f'Принято: {self.rowed_input}' + Fore.RESET)
 
     def CheckingEng(self):
-        if len(self.row_input) > 16:
+        while len(self.row_input) > 16:
             print(Fore.YELLOW + 'string length 16!'+ Fore.RESET)
             self.row_input = input(Fore.BLUE + 'Try again: ')
             self.rowed_input.clear()
             self.rowed_input.append(self.row_input.lower())
 
-        elif len(self.row_input) < 16:
+        while len(self.row_input) != 16:
             print(Fore.YELLOW + 'Your typed string so small need 16 letters!' + Fore.RESET)
             self.row_input = input(Fore.BLUE + 'Try again: ')
             self.rowed_input.clear()
