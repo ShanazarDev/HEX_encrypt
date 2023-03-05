@@ -35,14 +35,8 @@ class HexEncrypting:
 
     # Scan input for validate
     def CheckingRus(self):
-        while len(self.row_input) > 16:
-            print(Fore.YELLOW + 'длина строки больше 16!' + Fore.RESET)
-            self.row_input = input(Fore.BLUE + 'Попробуйте еще раз: ')
-            self.rowed_input.clear()
-            self.rowed_input.append(self.row_input.lower())
-
         while len(self.row_input) != 16:
-            print(Fore.YELLOW + 'Ваша набранная строка настолько мала, что нужно 16 букв!' + Fore.RESET)
+            print(Fore.RED + 'Нужно ровно 16 букв (Пробел тоже символ)!' + Fore.RESET)
             self.row_input = input(Fore.BLUE + 'Попробуйте еще раз: ')
             self.rowed_input.clear()
             self.rowed_input.append(self.row_input.lower())
@@ -51,14 +45,9 @@ class HexEncrypting:
             print(Fore.RED + f'Принято: {self.rowed_input}' + Fore.RESET)
 
     def CheckingEng(self):
-        while len(self.row_input) > 16:
-            print(Fore.YELLOW + 'string length 16!'+ Fore.RESET)
-            self.row_input = input(Fore.BLUE + 'Try again: ')
-            self.rowed_input.clear()
-            self.rowed_input.append(self.row_input.lower())
 
         while len(self.row_input) != 16:
-            print(Fore.YELLOW + 'Your typed string so small need 16 letters!' + Fore.RESET)
+            print(Fore.RED + 'Need 16 letters (Space 1 symbol)!' + Fore.RESET)
             self.row_input = input(Fore.BLUE + 'Try again: ')
             self.rowed_input.clear()
             self.rowed_input.append(self.row_input.lower())
@@ -97,16 +86,12 @@ class HexEncrypting:
             res = HEX.strip('0X')
             self.HEX_code.append(res)
 
-        print(
-            Fore.LIGHTGREEN_EX + f'HEX зашифрованное слово: {self.rowed_input} \t\n' + Fore.RESET + Fore.BLUE + 'Зашифрованная таблица HEX 4x4: ',end='')
+        print(Fore.LIGHTGREEN_EX + f'HEX зашифрованное слово: {self.rowed_input} \t\n' + Fore.RESET + Fore.BLUE + 'Зашифрованная таблица HEX 4x4: ',end='')
 
         # 4x4 table HEX code
-        for i in range(1):
+        for i in range(4):
             print(Fore.MAGENTA)
-            print(f'1 строка ---> {self.HEX_code[:4]}')
-            print(f'2 строка ---> {self.HEX_code[4:8]}')
-            print(f'3 строка ---> {self.HEX_code[8:12]}')
-            print(f'4 строка ---> {self.HEX_code[12:16]}')
+            print(f'{i+1} строка ---> {self.HEX_code[i*4:i*4+4]}')
 
         # One line string
         one_line = ' '.join([''.join(sub) for sub in self.HEX_code])
@@ -146,12 +131,9 @@ class HexEncrypting:
         print(Fore.LIGHTGREEN_EX + f'HEX encrypted word: {self.rowed_input} \t\n' + Fore.RESET + Fore.BLUE + 'Encrypted HEX 4x4 table: ', end='')
 
         # 4x4 table HEX code
-        for i in range(1):
+        for i in range(4):
             print(Fore.MAGENTA)
-            print(f'1 string ---> {self.HEX_code[:4]}')
-            print(f'2 string ---> {self.HEX_code[4:8]}')
-            print(f'3 string ---> {self.HEX_code[8:12]}')
-            print(f'4 string ---> {self.HEX_code[12:16]}')
+            print(f'{i+1} string ---> {self.HEX_code[i*4:i*4+4]}')
 
         # One line string
         one_line  = ' '.join([''.join(sub) for sub in self.HEX_code])

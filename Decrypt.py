@@ -1,5 +1,6 @@
 # Import all from Encrypt.py file
 # from Encrypt import *
+# Install requirements!!!
 from colorama import Fore
 
 
