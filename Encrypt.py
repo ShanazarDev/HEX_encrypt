@@ -7,20 +7,22 @@ class HexEncrypting:
         print("Select language (type number of language): \t\n 1. Russian \t\n 2. English")
         self.lang = input('\t')
 
-        if self.lang == '1':
-            self.row_input = input(Fore.BLUE + 'Введите слово для шифрования в HEX (длина строки должна быть 16): ')
-
-        elif self.lang == '2':
-            self.row_input = input(Fore.BLUE + 'Enter your word for encrypting to HEX (string length should be 16): ')
-        else:
-            print(Fore.RED + 'Wrong input! Try again.\t\nНерпавильное значение! Попробуйте заново!')
+        match self.lang:
+            case '1':
+                self.row_input = input(Fore.BLUE + 'Введите слово для шифрования в HEX (длина строки должна быть 16): ')
+            case '2':
+                self.row_input = input(Fore.BLUE + 'Enter your word for encrypting to HEX (string length should be 16): ')
+            case _:
+                print(Fore.RED + 'Wrong input! Try again.\t\nНерпавильное значение! Попробуйте заново!')
 
         self.rowed_input = []
         self.new_key = []
         self.row_ABC = []
         self.HEX_code = []
         self.HEX_line = []
-        self.abc = {1: 'a', 2: 'b', 3: 'c', 4: 'd', 5: 'e', 6: 'f', 7: 'g', 8: 'h', 9: 'i', 10: 'j', 11: 'k', 12: 'l', 13: 'm', 14: 'n', 15: 'o', 16: 'p', 17: 'q', 18: 'r', 19: 's', 20: 't', 21: 'u', 22: 'v', 23: 'w', 24: 'x', 25: 'y', 26: 'z', 27: ' '}
+        self.abc = {1: 'a', 2: 'b', 3: 'c', 4: 'd', 5: 'e', 6: 'f', 7: 'g', 8: 'h', 9: 'i', 10: 'j',
+                    11: 'k', 12: 'l', 13: 'm', 14: 'n', 15: 'o', 16: 'p', 17: 'q', 18: 'r', 19: 's', 
+                    20: 't', 21: 'u', 22: 'v', 23: 'w', 24: 'x', 25: 'y', 26: 'z', 27: ' '}
         self.rowed_input.append(self.row_input.lower())
 
         for i in self.row_input:
@@ -142,13 +144,14 @@ class HexEncrypting:
         print(Fore.BLUE + f'HEX without 4x4: {self.HEX_line}')
 
     def Language(self):
-        if self.lang == '1':
-            h.CheckingRus()
-            h.EncryptRus()
+        match self.lang:
+            case '1':
+                h.CheckingRus()
+                h.EncryptRus()
 
-        elif self.lang == '2':
-            h.CheckingEng()
-            h.EncryptEng()
+            case '2':
+                h.CheckingEng()
+                h.EncryptEng()
 
 # Run
 if __name__ == '__main__':

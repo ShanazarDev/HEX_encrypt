@@ -18,30 +18,31 @@ class Decrypt():
         print("Select language (type number of language): \t\n 1. Russian \t\n 2. English")
         self.lang_input = input('\t')
 
-        if self.lang_input == '1':
-            for i in range(1, 17):
-                self.get_input = input(Fore.BLUE + 'Напишите свой HEX код по одной нажимая ввод: ')
-                if self.get_input == ' ':
-                    print(Fore.RED + 'Пустая строка не является доступом. Попробуйте еще раз!' + Fore.RESET)
-                    break
-                else:
-                    pass
+        match self.lang_input:
+            case '1':
+                for i in range(1, 17):
+                    self.get_input = input(Fore.BLUE + 'Напишите свой HEX код по одной нажимая ввод: ')
+                    if self.get_input == ' ':
+                        print(Fore.RED + 'Пустая строка не является доступом. Попробуйте еще раз!' + Fore.RESET)
+                        break
+                    else:
+                        pass
                 self.row_input.append(self.get_input)
-            print(Fore.YELLOW + 'Ваш HEX код: \t', self.row_input)
+                print(Fore.YELLOW + 'Ваш HEX код: \t', self.row_input)
 
-        elif self.lang_input == '2':
-            for i in range(1, 17):
-                self.get_input = input(Fore.BLUE + 'Enter 16 digits of HEX code 1 to 1 with pressing enter: ')
-                if self.get_input == ' ':
-                    print(Fore.RED + 'Empty string is not access. Try again!' + Fore.RESET)
-                    break
-                else:
-                    pass
-                self.row_input.append(self.get_input)
-            print(Fore.YELLOW + 'Your HEX code: \t', self.row_input)
+            case '2':
+                for i in range(1, 17):
+                    self.get_input = input(Fore.BLUE + 'Enter 16 digits of HEX code 1 to 1 with pressing enter: ')
+                    if self.get_input == ' ':
+                        print(Fore.RED + 'Empty string is not access. Try again!' + Fore.RESET)
+                        break
+                    else:
+                        pass
+                    self.row_input.append(self.get_input)
+                print(Fore.YELLOW + 'Your HEX code: \t', self.row_input)
 
-        else:
-            print(Fore.RED + 'Wrong input! Try again.\t\nНерпавильное значение! Попробуйте заново!')
+            case _:
+                print(Fore.RED + 'Wrong input! Try again.\t\nНерпавильное значение! Попробуйте заново!')
 
     # Checker input function Rus and Eng
     def CheckerRus(self):
@@ -112,14 +113,15 @@ class Decrypt():
 
     # Language selector
     def Lang(self):
-        if self.lang_input == '1':
-            dec.CheckerRus()
-            dec.Decrypting()
+        match self.lang_input:
+            case '1':
+                dec.CheckerRus()
+                dec.Decrypting()
 
-        elif self.lang_input == '2':
-            dec.CheckerEng()
-            dec.Decrypting()
+            case '2':
+                dec.CheckerEng()
+                dec.Decrypting()
 
-
-dec = Decrypt()
-dec.Lang()
+if __name__ == "__main__":
+    dec = Decrypt()
+    dec.Lang()
