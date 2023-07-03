@@ -1,6 +1,6 @@
 from colorama import Fore
 
-# class AES, all algorithm
+
 class HexEncrypting:
     # Inputs function
     def __init__(self):
@@ -11,7 +11,8 @@ class HexEncrypting:
             case '1':
                 self.row_input = input(Fore.BLUE + 'Введите слово для шифрования в HEX (длина строки должна быть 16): ')
             case '2':
-                self.row_input = input(Fore.BLUE + 'Enter your word for encrypting to HEX (string length should be 16): ')
+                self.row_input = input(
+                    Fore.BLUE + 'Enter your word for encrypting to HEX (string length should be 16): ')
             case _:
                 print(Fore.RED + 'Wrong input! Try again.\t\nНерпавильное значение! Попробуйте заново!')
 
@@ -21,7 +22,7 @@ class HexEncrypting:
         self.HEX_code = []
         self.HEX_line = []
         self.abc = {1: 'a', 2: 'b', 3: 'c', 4: 'd', 5: 'e', 6: 'f', 7: 'g', 8: 'h', 9: 'i', 10: 'j',
-                    11: 'k', 12: 'l', 13: 'm', 14: 'n', 15: 'o', 16: 'p', 17: 'q', 18: 'r', 19: 's', 
+                    11: 'k', 12: 'l', 13: 'm', 14: 'n', 15: 'o', 16: 'p', 17: 'q', 18: 'r', 19: 's',
                     20: 't', 21: 'u', 22: 'v', 23: 'w', 24: 'x', 25: 'y', 26: 'z', 27: ' '}
         self.rowed_input.append(self.row_input.lower())
 
@@ -34,9 +35,8 @@ class HexEncrypting:
             else:
                 break
 
-
     # Scan input for validate
-    def CheckingRus(self):
+    def checking_rus(self):
         while len(self.row_input) != 16:
             print(Fore.RED + 'Нужно ровно 16 букв (Пробел тоже символ)!' + Fore.RESET)
             self.row_input = input(Fore.BLUE + 'Попробуйте еще раз: ')
@@ -46,7 +46,7 @@ class HexEncrypting:
         else:
             print(Fore.RED + f'Принято: {self.rowed_input}' + Fore.RESET)
 
-    def CheckingEng(self):
+    def checking_eng(self):
 
         while len(self.row_input) != 16:
             print(Fore.RED + 'Need 16 letters (Space 1 symbol)!' + Fore.RESET)
@@ -58,9 +58,8 @@ class HexEncrypting:
             print(Fore.RED + f'Accept: {self.rowed_input}' + Fore.RESET)
 
     # Encrypt information
-    def EncryptRus(self):
-        b = str(self.rowed_input)
-        d = b.strip("[]'")
+    def encrypt_rus(self):
+        d = str(self.rowed_input).strip("[]'")
 
         for i in d:
             self.new_key.append(i)
@@ -88,22 +87,24 @@ class HexEncrypting:
             res = HEX.strip('0X')
             self.HEX_code.append(res)
 
-        print(Fore.LIGHTGREEN_EX + f'HEX зашифрованное слово: {self.rowed_input} \t\n' + Fore.RESET + Fore.BLUE + 'Зашифрованная таблица HEX 4x4: ',end='')
+        print(
+            Fore.LIGHTGREEN_EX + f'HEX зашифрованное слово: {self.rowed_input} \t\n' + Fore.RESET + Fore.BLUE + 'Зашифрованная таблица HEX 4x4: ',
+            end='')
 
         # 4x4 table HEX code
         for i in range(4):
             print(Fore.MAGENTA)
-            print(f'{i+1} строка ---> {self.HEX_code[i*4:i*4+4]}')
+            print(f'{i + 1} строка ---> {self.HEX_code[i * 4:i * 4 + 4]}', end='')
+            with open(f'encoded_text - {self.row_input}.txt', 'a') as f:
+                f.write(f'{self.HEX_code[i * 4:i * 4 + 4]} \n')
 
         # One line string
         one_line = ' '.join([''.join(sub) for sub in self.HEX_code])
         self.HEX_line.append(one_line)
-        print()
-        print(Fore.BLUE + f'HEX без 4x4: {self.HEX_line}')
+        print('\n' + Fore.BLUE + f'HEX без 4x4: {self.HEX_line}')
 
-    def EncryptEng(self):
-        b = str(self.rowed_input)
-        d = b.strip("[]'")
+    def encrypt_eng(self):
+        d = str(self.rowed_input).strip("[]'")
 
         for i in d:
             self.new_key.append(i)
@@ -113,6 +114,7 @@ class HexEncrypting:
             for KEY, value in self.abc.items():
                 if val == value:
                     return KEY
+
         # Set what KEY need
         for x in self.new_key:
             if x in self.new_key:
@@ -130,30 +132,35 @@ class HexEncrypting:
             res = HEX.strip('0X')
             self.HEX_code.append(res)
 
-        print(Fore.LIGHTGREEN_EX + f'HEX encrypted word: {self.rowed_input} \t\n' + Fore.RESET + Fore.BLUE + 'Encrypted HEX 4x4 table: ', end='')
+        print(
+            Fore.LIGHTGREEN_EX + f'HEX encrypted word: {self.rowed_input} \t\n' + Fore.RESET + Fore.BLUE + 'Encrypted HEX 4x4 table: ',
+            end='')
 
         # 4x4 table HEX code
         for i in range(4):
             print(Fore.MAGENTA)
-            print(f'{i+1} string ---> {self.HEX_code[i*4:i*4+4]}')
+            print(f'{i + 1} string ---> {self.HEX_code[i * 4:i * 4 + 4]}')
+            with open(f'encoded_text - {self.row_input}.txt', 'a') as f:
+                f.write(f'{self.HEX_code[i * 4:i * 4 + 4]} \n')
 
         # One line string
-        one_line  = ' '.join([''.join(sub) for sub in self.HEX_code])
+        one_line = ' '.join([''.join(sub) for sub in self.HEX_code])
         self.HEX_line.append(one_line)
         print()
         print(Fore.BLUE + f'HEX without 4x4: {self.HEX_line}')
 
-    def Language(self):
+    def language(self):
         match self.lang:
             case '1':
-                h.CheckingRus()
-                h.EncryptRus()
+                h.checking_rus()
+                h.encrypt_rus()
 
             case '2':
-                h.CheckingEng()
-                h.EncryptEng()
+                h.checking_eng()
+                h.encrypt_eng()
+
 
 # Run
 if __name__ == '__main__':
     h = HexEncrypting()
-    h.Language()
+    h.language()
